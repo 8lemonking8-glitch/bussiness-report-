@@ -18,6 +18,8 @@
 \usepackage{xcolor}
 \usepackage{setspace}
 \usepackage{indentfirst}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
 
 \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
 \IfFontExistsTF{Arial}{\setsansfont{Arial}}{}
@@ -182,6 +184,29 @@
 
 \PlanItem{新光犬行并不宣称完全替代真实导盲犬，而是作为一种可量产、可租赁、可部署、可持续运维的智能辅助产品。对于个人用户，它是日常出行和陌生场景中的安全辅助工具；对于景区、医院、车站等公共空间，它是提升无障碍服务能力的智能设施；对于残联、社区和公益机构，它是可集中采购、共享使用、降低服务成本的新型辅助器具。}
 
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    node distance=1.1cm,
+    module/.style={draw, rounded corners, minimum width=3cm, minimum height=0.9cm, align=center},
+    core/.style={draw, rounded corners, minimum width=3.6cm, minimum height=1cm, align=center, fill=gray!12},
+    arrow/.style={-{Stealth[length=2.2mm]}, thick}
+  ]
+    \node[core] (robot) {导盲犬形态\\智能陪行机器人};
+    \node[module, above left=of robot] (lidar) {激光雷达\\深度视觉};
+    \node[module, above right=of robot] (compute) {边缘计算\\路径规划};
+    \node[module, below left=of robot] (handle) {牵引手柄\\震动反馈};
+    \node[module, below right=of robot] (voice) {语音交互\\紧急求助};
+    \node[module, below=1.45cm of robot] (cloud) {地图平台\\远程运维};
+    \draw[arrow] (lidar) -- (robot);
+    \draw[arrow] (compute) -- (robot);
+    \draw[arrow] (robot) -- (handle);
+    \draw[arrow] (robot) -- (voice);
+    \draw[arrow] (robot) -- (cloud);
+  \end{tikzpicture}
+  \caption{产品总体构成示意图}
+\end{figure}
+
 \subsection{产品功能}
 
 \PlanItem{核心功能一是室外避障通行。产品通过激光雷达、深度摄像头和超声波传感器识别行人、墙体、车辆边缘、路障、台阶、低矮障碍物和临时施工区域，在用户步行速度范围内实时调整路线。与普通盲杖相比，它能够提前发现更远距离的障碍，并通过牵引和语音共同提醒用户。}
@@ -219,6 +244,28 @@
 \PlanItem{第三项核心技术是人机共行控制。视障辅助设备不能像普通配送机器人一样只考虑自身到达目的地，还要考虑使用者步幅、心理安全感、握持习惯、转弯半径和突发停顿。新光犬行将通过速度限制、柔性牵引、偏航提醒和主动让行策略，使设备成为“引导者”，而不是强行拖动用户的机器。}
 
 \PlanItem{第四项核心技术是场景地图运维。产品进入景区、医院、地铁站等场景前，需要完成地图采集、点位标注、无障碍路线审核和危险区域标记；投入使用后，还需要根据施工、展陈调整、科室搬迁和人流变化持续更新地图。地图运维能力决定了产品能否从单台设备变成可复制服务。}
+
+\begin{figure}[htbp]
+  \centering
+  \resizebox{0.9\textwidth}{!}{%
+  \begin{tikzpicture}[
+    node distance=0.9cm,
+    flowstep/.style={draw, rounded corners, minimum width=2.5cm, minimum height=0.85cm, align=center},
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[flowstep] (sense) {多传感器\\环境感知};
+    \node[flowstep, right=of sense] (map) {SLAM 建图\\室内定位};
+    \node[flowstep, right=of map] (plan) {路径规划\\风险判断};
+    \node[flowstep, right=of plan] (interact) {语音提示\\牵引反馈};
+    \node[flowstep, right=of interact] (safe) {异常停车\\后台告警};
+    \draw[arrow] (sense) -- (map);
+    \draw[arrow] (map) -- (plan);
+    \draw[arrow] (plan) -- (interact);
+    \draw[arrow] (interact) -- (safe);
+  \end{tikzpicture}
+  }
+  \caption{核心技术路线示意图}
+\end{figure}
 
 \subsection{服务体系}
 
@@ -417,6 +464,22 @@
 
 \PlanItem{后续随着项目进入试点阶段，团队将优先补充两类成员：一类是财务与综合管理人员，负责预算、采购、成本、合同和融资材料；另一类是运营交付人员，负责设备投放、地图采集、培训巡检、故障响应和用户回访。这样既保持早期团队灵活性，也为规模化复制预留组织空间。}
 
+\subsection{团队成员介绍}
+
+\begin{table}[htbp]
+  \centering
+  \caption{团队成员个人介绍占位}
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}X}
+    \toprule
+    成员 & 项目分工 & 个人介绍占位 \\
+    \midrule
+    杨哲凯 & 项目负责人 & 后续补充专业年级、项目经历、组织协调经历、竞赛或实践成果，重点体现项目统筹、商业计划和资源协调能力。 \\
+    陈施航 & 技术负责人 & 后续补充专业年级、技术能力、硬件/算法/机器人相关经历，重点体现激光雷达、室内导航和设备安全控制能力。 \\
+    朱煜杰 & 市场与运营负责人 & 后续补充专业年级、市场调研、活动组织、沟通协作或运营实践经历，重点体现场景合作、用户反馈和试点落地能力。 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
 \begin{table}[htbp]
   \centering
   \caption{团队岗位职责}
@@ -503,6 +566,29 @@
   \end{tabularx}
 \end{table}
 
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    node distance=0.9cm,
+    block/.style={draw, rounded corners, minimum width=2.65cm, minimum height=0.85cm, align=center},
+    center/.style={draw, rounded corners, minimum width=3.1cm, minimum height=1cm, align=center, fill=gray!12},
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[center] (company) {新光犬行\\平台与设备};
+    \node[block, above left=of company] (b) {B 端场景\\景区/医院};
+    \node[block, above right=of company] (c) {C 端用户\\个人/家庭};
+    \node[block, below left=of company] (service) {地图建设\\年度运维};
+    \node[block, below right=of company] (public) {残联社区\\公益采购};
+    \draw[arrow] (company) -- (b);
+    \draw[arrow] (company) -- (c);
+    \draw[arrow] (company) -- (service);
+    \draw[arrow] (company) -- (public);
+    \draw[arrow] (b) -- (company);
+    \draw[arrow] (service) -- (company);
+  \end{tikzpicture}
+  \caption{商业模式示意图}
+\end{figure}
+
 \subsection{目标客户}
 
 \PlanItem{第一类目标客户是公共服务机构，包括残联、社区、政务大厅、公共图书馆和市民服务中心。这类客户更重视社会价值、服务公平和项目示范意义，采购决策中公益属性和政策契合度较高，适合通过试点项目、公益合作和政府采购方式切入。}
@@ -568,6 +654,32 @@
     \bottomrule
   \end{tabularx}
 \end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    node distance=0.65cm,
+    flowstep/.style={draw, rounded corners, minimum width=2.25cm, minimum height=0.8cm, align=center},
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[flowstep] (survey) {场景勘测};
+    \node[flowstep, right=of survey] (map) {地图采集};
+    \node[flowstep, right=of map] (mark) {点位标注};
+    \node[flowstep, right=of mark] (test) {路线测试};
+    \node[flowstep, below=0.9cm of mark] (train) {人员培训};
+    \node[flowstep, left=of train] (deploy) {设备投放};
+    \node[flowstep, left=of deploy] (review) {试运行复盘};
+    \node[flowstep, right=of train] (ops) {运维更新};
+    \draw[arrow] (survey) -- (map);
+    \draw[arrow] (map) -- (mark);
+    \draw[arrow] (mark) -- (test);
+    \draw[arrow] (test) -- (train);
+    \draw[arrow] (train) -- (deploy);
+    \draw[arrow] (deploy) -- (review);
+    \draw[arrow] (train) -- (ops);
+  \end{tikzpicture}
+  \caption{场景部署流程示意图}
+\end{figure}
 
 \subsection{技术落地流程}
 
