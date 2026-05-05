@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.27)  6 MAY 2026 03:10
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.27)  6 MAY 2026 03:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1359,6 +1359,11 @@ in box being split [48
 
 ]
 ignored: Infinite glue shrinkage found in box being split [49] [50] [51]
+File: LastPage.png Graphic file (type bmp)
+<LastPage.png>
+ [52
+
+]
 (./瞳伴商业计划书.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -1372,12 +1377,12 @@ Package rerunfilecheck Info: File `瞳伴商业计划书.out' has not changed.
 (rerunfilecheck)             Checksum: 22A83C601CD239268FE71810C71EF8E0;7794.
  ) 
 Here is how much of TeX's memory you used:
- 29680 strings out of 468168
- 662690 string characters out of 5432815
+ 29689 strings out of 468168
+ 662846 string characters out of 5432815
  1075382 words of memory out of 5000000
- 57914 multiletter control sequences out of 15000+600000
+ 57922 multiletter control sequences out of 15000+600000
  632875 words of font info for 104 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,12n,113p,1193b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 瞳伴商业计划书.pdf (55 pages).
+Output written on 瞳伴商业计划书.pdf (56 pages).
