@@ -69,14 +69,14 @@
   {\chinese{section}、}
   {0pt}
   {}
-\titlespacing*{\section}{0pt}{22bp}{22bp}
+\titlespacing*{\section}{0pt}{18bp}{12bp}
 
 \titleformat{\subsection}
   {\raggedright\SongBold\fontsize{12bp}{22bp}\selectfont}
   {\hspace{2em}（\chinese{subsection}）}
   {0pt}
   {}
-\titlespacing*{\subsection}{0pt}{22bp}{22bp}
+\titlespacing*{\subsection}{0pt}{14bp}{6bp}
 
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
@@ -244,11 +244,9 @@
 
 \PlanItem{安全守护贯穿所有功能。设备提供一键求助、实时位置共享、低电量提醒、异常停留告警和远程运维监控。当检测到定位异常、障碍物过近、用户突然停顿或电量不足时，设备自动减速或停止，并通过语音和后台同时通知相关人员。手柄上保留了物理急停键，任何时候用户都可以一键让设备停下。}
 
-\begin{table}[H]
-  \centering
-  \caption{产品核心功能}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-3cm-2\tabcolsep\relax}@{}}
+  \caption{产品核心功能}\\
+  \toprule
     功能模块 & 具体说明 \\
     \midrule
     激光雷达避障 & 识别墙面、行人、立柱、台阶边缘和临时障碍，实时调整行进路线 \\
@@ -257,8 +255,7 @@
     牵引反馈 & 通过手柄方向力和震动提示传递前进、转向、减速和停止信号 \\
     安全守护 & 提供一键求助、实时位置共享、低电量提醒和异常滞留告警 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{核心技术}
 
@@ -338,11 +335,9 @@
 
 \PlanItem{B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务，医院需要把患者从入口带到具体诊室、检查室和取药窗口，交通枢纽需要在安检、候车、换乘和出站之间提供连续导引，政务大厅需要帮助特殊人群完成办事流程。与单纯面向个人销售相比，先进入 B 端场景更容易形成展示案例、稳定回款和规模复制。}
 
-\begin{table}[H]
-  \centering
-  \caption{目标市场细分}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-7cm-4\tabcolsep\relax}@{}}
+  \caption{目标市场细分}\\
+  \toprule
     市场类型 & 主要客户 & 核心需求 \\
     \midrule
     公共服务市场 & 残联、社区、政务大厅 & 提供辅助器具服务，提升公共服务公平性 \\
@@ -350,8 +345,7 @@
     文旅无障碍市场 & 景区、博物馆、展馆 & 提供无障碍游览、智能讲解和服务品牌升级 \\
     个人出行市场 & 视障人士、低视力老人及家庭 & 提升独立出行能力，降低家属陪同压力 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{市场调研}
 
@@ -363,11 +357,9 @@
 
 \PlanItem{残联和社区则更关注设备共享、培训成本、公益采购和低收入人群可及性。一次性高价采购对这类客户压力较大，租赁、联合采购、公益赞助和共享服务点更容易被接受。}
 
-\begin{table}[H]
-  \centering
-  \caption{市场调研结论摘要}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-3cm-2\tabcolsep\relax}@{}}
+  \caption{市场调研结论摘要}\\
+  \toprule
     调研对象 & 主要结论 \\
     \midrule
     视障人士及低视力老人 & 重视安全、简单、准确和求助功能，对价格较敏感，需要先体验再信任 \\
@@ -375,8 +367,7 @@
     医院/公共服务机构 & 关注导诊效率、路线准确、工作人员配合和异常情况处理 \\
     残联/社区 & 关注共享使用、公益采购、培训成本和辅助器具可及性 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{市场定位}
 
@@ -410,11 +401,9 @@
 
 \PlanItem{从竞争壁垒看，单一硬件并不构成长期壁垒，真正的壁垒来自场景数据、地图运维、用户信任和渠道资源的积累。谁能更早进入真实公共空间，积累无障碍路线数据、用户反馈、设备运行记录和场景交付经验，谁就更易于形成后续的复制优势。}
 
-\begin{table}[H]
-  \centering
-  \caption{项目与主要替代方案对比}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.4cm} >{\centering\arraybackslash}p{2cm} *{3}{>{\centering\arraybackslash}X} >{\centering\arraybackslash}p{2cm}}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.4cm} >{\centering\arraybackslash}p{2cm} *{3}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-6.4cm-10\tabcolsep)/3\relax}} >{\centering\arraybackslash}p{2cm}@{}}
+  \caption{项目与主要替代方案对比}\\
+  \toprule
     方案类型 & 参考价格 & 避障能力 & 室内导引 & 陪伴体验 & 可规模部署 \\
     \midrule
     普通盲杖 & 30--500元 & 低（约1米） & 无 & 低 & 高 \\
@@ -424,8 +413,7 @@
     人工陪同 & 200--500元/天 & 高 & 高 & 高 & 低 \\
     瞳伴 & 售价1.8--2.6万元/租赁1,200--2,000元/月 & 高（≥20米） & 高（2--5cm定位） & 中高 & 高 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{波特五力分析}
 
@@ -439,11 +427,9 @@
 
 \PlanItem{替代品威胁方面，普通盲杖、电子盲杖、导盲犬、人工陪同和手机导航都能满足部分需求，但它们分别存在感知范围有限、供给不足、人力成本高或室内定位不足等问题。瞳伴的关键在于通过“设备 + 地图 + 运维”提供更完整的场景化解决方案，以此有效降低替代品的威胁。}
 
-\begin{table}[H]
-  \centering
-  \caption{波特五力分析摘要}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} >{\centering\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.2cm} >{\centering\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-5.4cm-4\tabcolsep\relax}@{}}
+  \caption{波特五力分析摘要}\\
+  \toprule
     分析维度 & 强度判断 & 说明 \\
     \midrule
     产业内部竞争 & 中 & 现有替代方案较多，但场景化智能陪行产品仍少 \\
@@ -452,8 +438,7 @@
     买方议价能力 & 高 & B 端客户采购谨慎，重视安全和成本 \\
     替代品威胁 & 中 & 盲杖、导盲犬和人工陪同可替代部分功能 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{SWOT 分析}
 
@@ -465,11 +450,9 @@
 
 \PlanItem{威胁方面，未来可能出现机器人企业、互联网地图企业、智能硬件企业进入该赛道，带来技术和资金竞争；同时，若早期试点中出现安全事故或用户体验不佳，将严重影响项目声誉。因此，项目必须坚持小范围验证、低速运行、人工兜底和稳步复制的原则。}
 
-\begin{table}[H]
-  \centering
-  \caption{瞳伴 SWOT 分析}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-2.6cm-2\tabcolsep\relax}@{}}
+  \caption{瞳伴 SWOT 分析}\\
+  \toprule
     类型 & 主要内容 \\
     \midrule
     优势 & 技术组合差异化明显，社会价值强，适合 B 端场景批量投放，可形成地图与运维服务收入 \\
@@ -477,8 +460,7 @@
     机会 & 无障碍环境建设、银发经济、智慧文旅和公共服务数字化带来增量需求 \\
     威胁 & 大型机器人企业或地图平台可能进入，安全事故和试点体验不佳会影响推广 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{市场进入策略}
 
@@ -643,11 +625,9 @@
 
 \PlanItem{公益采购是项目的重要补充模式。残联、社区、公益基金会和社会责任项目可集中采购或租赁设备，并以共享方式服务更多视障人士和低视力老人。这一模式虽然单台利润可能低于商业场景，但能够快速形成社会影响力和示范案例，为后续进入更多公共空间创造条件。}
 
-\begin{table}[H]
-  \centering
-  \caption{商业模式拆解}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-6.5cm-4\tabcolsep\relax}@{}}
+  \caption{商业模式拆解}\\
+  \toprule
     收入模块 & 对应客户 & 收益逻辑 \\
     \midrule
     整机销售 & 家庭用户、残联、医院 & 形成一次性硬件收入和装机基础 \\
@@ -656,8 +636,7 @@
     运维服务 & B 端场景客户 & 提供地图更新、设备巡检、远程监控和系统升级 \\
     导览套餐 & 景区和游客 & 将无障碍引导与景点讲解结合，按次或按会员收费 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \begin{figure}[H]
   \centering
@@ -732,11 +711,9 @@
 
 \PlanItem{供应链方面，项目优先选用成熟的标准件，避免早期过度定制。激光雷达、深度摄像头、边缘计算模块、电池、电机和控制板等关键部件建立至少两家备选供应商；非核心结构件采用可快速调整的模块化设计，以便根据试点反馈修改外观、手柄和防护结构。}
 
-\begin{table}[H]
-  \centering
-  \caption{生产运营关键流程}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-3cm-2\tabcolsep\relax}@{}}
+  \caption{生产运营关键流程}\\
+  \toprule
     环节 & 关键动作 \\
     \midrule
     样机研发 & 完成底盘、雷达、视觉、手柄和语音模块集成 \\
@@ -745,8 +722,7 @@
     运营维护 & 定期巡检设备、更新地图、处理故障并收集用户反馈 \\
     规模复制 & 将成熟场景方案标准化，复制到同类客户 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \begin{figure}[H]
   \centering
@@ -790,11 +766,9 @@
 
 \PlanItem{对于景区场景，建图重点为无障碍游览路线、景点讲解点、休息点、卫生间、游客中心和出口；对于医院场景，建图重点为挂号处、诊室、检查室、取药窗口、电梯和出口；对于交通枢纽场景，建图重点为安检口、服务台、候车区、站台、换乘通道和出站口。不同场景的地图模板各异，但底层交付流程可标准化。}
 
-\begin{table}[H]
-  \centering
-  \caption{典型场景部署重点}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-3cm-2\tabcolsep\relax}@{}}
+  \caption{典型场景部署重点}\\
+  \toprule
     场景类型 & 部署重点 \\
     \midrule
     景区/博物馆 & 游览路线、景点讲解、休息点、卫生间、游客中心、出口 \\
@@ -803,8 +777,7 @@
     政务大厅 & 取号机、窗口、咨询台、等候区、无障碍通道、出口 \\
     残联/社区 & 设备共享点、培训路线、服务窗口、活动空间、应急点位 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{质量控制}
 
@@ -860,11 +833,9 @@
 
 \PlanItem{成本主要由三部分构成。第一部分是产品成本，包括激光雷达、深度摄像头、边缘计算模块、电池、电机、底盘、外壳和装配费用；第二部分是服务成本，包括地图采集、点位标注、现场培训、设备巡检和售后维护；第三部分是期间费用，包括研发、市场推广、管理人员工资和办公费用。}
 
-\begin{table}[H]
-  \centering
-  \caption{收入结构预测}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} *{5}{>{\centering\arraybackslash}X}}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.2cm} *{5}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-3.2cm-10\tabcolsep)/5\relax}}@{}}
+  \caption{收入结构预测}\\
+  \toprule
     收入项目 & 2026E & 2027E & 2028E & 2029E & 2030E \\
     \midrule
     整机销售（万元） & 60 & 180 & 420 & 900 & 1700 \\
@@ -874,18 +845,15 @@
     导览及其他（万元） & 5 & 20 & 80 & 140 & 380 \\
     合计（万元） & 180 & 620 & 1560 & 3280 & 6100 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \PlanItem{从收入结构看，项目早期依赖设备销售和租赁，中后期逐步提高服务收入占比。这种结构不是为了长期做硬件搬运，而是通过地图、运维和平台服务形成更稳定的续费能力。}
 
 \subsection{利润预测}
 
-\begin{table}[H]
-  \centering
-  \caption{2026--2030 年核心财务预测}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.2cm} *{5}{>{\centering\arraybackslash}X}}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.2cm} *{5}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-2.2cm-10\tabcolsep)/5\relax}}@{}}
+  \caption{2026--2030 年核心财务预测}\\
+  \toprule
     指标 & 2026E & 2027E & 2028E & 2029E & 2030E \\
     \midrule
     营业收入（万元） & 180 & 620 & 1560 & 3280 & 6100 \\
@@ -893,16 +861,13 @@
     投放设备（台） & 20 & 80 & 220 & 520 & 1000 \\
     合作场景（个） & 3 & 8 & 22 & 50 & 90 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \PlanItem{项目第一年以研发和试点为主，净利润为负属正常现象；第二年通过试点收入与首批租赁回款实现盈亏平衡；第三年后随着合作场景增多，收入和利润进入较快增长阶段。利润改善主要来自三个方面：设备采购和装配成本随批量增加而下降，场景地图和运维流程标准化后单场景交付成本降低，年度运维和导览服务等持续性收入的边际成本远低于硬件交付。}
 
-\begin{table}[H]
-  \centering
-  \caption{成本费用结构预测}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} *{5}{>{\centering\arraybackslash}X}}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.2cm} *{5}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-3.2cm-10\tabcolsep)/5\relax}}@{}}
+  \caption{成本费用结构预测}\\
+  \toprule
     成本费用项目 & 2026E & 2027E & 2028E & 2029E & 2030E \\
     \midrule
     产品与加工成本 & 130 & 310 & 710 & 1380 & 2380 \\
@@ -912,16 +877,13 @@
     管理费用 & 20 & 20 & 110 & 270 & 580 \\
     净利润 & -120 & 45 & 260 & 760 & 1680 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{利润表预测}
 
-\begin{table}[H]
-  \centering
-  \caption{利润表预测}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.1cm} *{5}{>{\centering\arraybackslash}X}}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.1cm} *{5}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-3.1cm-10\tabcolsep)/5\relax}}@{}}
+  \caption{利润表预测}\\
+  \toprule
     项目 & 2026E & 2027E & 2028E & 2029E & 2030E \\
     \midrule
     营业收入（万元） & 180 & 620 & 1560 & 3280 & 6100 \\
@@ -931,16 +893,13 @@
     利润总额（万元） & -120 & 45 & 260 & 760 & 1680 \\
     净利润（万元） & -120 & 45 & 260 & 760 & 1680 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{资产负债表预测}
 
-\begin{table}[H]
-  \centering
-  \caption{资产负债表预测}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.1cm} *{5}{>{\centering\arraybackslash}X}}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.1cm} *{5}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-3.1cm-10\tabcolsep)/5\relax}}@{}}
+  \caption{资产负债表预测}\\
+  \toprule
     项目 & 2026E & 2027E & 2028E & 2029E & 2030E \\
     \midrule
     流动资产（万元） & 260 & 380 & 760 & 1450 & 2800 \\
@@ -951,16 +910,13 @@
     长期负债（万元） & 0 & 0 & 0 & 0 & 0 \\
     所有者权益（万元） & 310 & 440 & 830 & 1510 & 2780 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{现金流量表预测}
 
-\begin{table}[H]
-  \centering
-  \caption{现金流量表预测}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.3cm} *{5}{>{\centering\arraybackslash}X}}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.3cm} *{5}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-3.3cm-10\tabcolsep)/5\relax}}@{}}
+  \caption{现金流量表预测}\\
+  \toprule
     项目 & 2026E & 2027E & 2028E & 2029E & 2030E \\
     \midrule
     经营活动现金流（万元） & -100 & 80 & 310 & 820 & 1760 \\
@@ -969,8 +925,7 @@
     现金净增加额（万元） & 90 & -10 & 160 & 600 & 1500 \\
     期末现金余额（万元） & 90 & 80 & 240 & 840 & 2340 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{融资需求与资金用途}
 
@@ -999,19 +954,16 @@
 
 \PlanItem{本轮融资完成后，公司股权结构如下表所示。创始团队持有公司绝大部分股权，保持对公司的绝对控制权；投资人以300万元获得12\%股权；另预留10\%作为核心员工期权池，用于后续吸引关键技术和管理人才。}
 
-\begin{table}[H]
-  \centering
-  \caption{股权结构表}
-  \begin{tabularx}{0.7\textwidth}{>{\centering\arraybackslash}p{1cm} >{\raggedright\arraybackslash}p{3.5cm} >{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2cm}}
-    \toprule
+\begin{longtable}{@{}>{\centering\arraybackslash}p{1cm} >{\raggedright\arraybackslash}p{3.5cm} >{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2cm}@{}}
+  \caption{股权结构表}\\
+  \toprule
     序号 & 股东名称 & 角色 & 持股比例 \\
     \midrule
     1 & 杨哲凯、陈施航、朱煜杰 & 创始团队 & 78\% \\
     2 & 本轮投资人 & 财务投资人 & 12\% \\
     3 & 核心员工期权池 & 预留激励 & 10\% \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \subsection{投资回报分析}
 
@@ -1019,11 +971,9 @@
 
 \PlanItem{按 2026--2030 年预测，项目五年累计净利润约 2625 万元。若公司从盈利年度开始按净利润的 20\% 进行分红，投资人按 12\% 股权可获得累计现金分红约 65.9 万元；更主要的收益来自第五年后的股权增值和退出机会。}
 
-\begin{table}[H]
-  \centering
-  \caption{投资人收益测算}
-  \begin{tabularx}{0.86\textwidth}{>{\raggedright\arraybackslash}X >{\centering\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr0.43\textwidth-1\tabcolsep\relax} >{\centering\arraybackslash}p{\dimexpr0.43\textwidth-1\tabcolsep\relax}@{}}
+  \caption{投资人收益测算}\\
+  \toprule
     指标 & 测算结果 \\
     \midrule
     本轮投资金额 & 300 万元 \\
@@ -1033,8 +983,7 @@
     五年累计现金分红 & 约 65.9 万元 \\
     主要增值来源 & 后续融资、股权转让或产业并购 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \PlanItem{需要说明的是，本项目早期投资回报不应仅着眼于短期分红。由于机器人硬件、地图数据、公共空间渠道和运维体系需要时间积累，项目价值更可能在示范场景复制、设备投放规模扩大和下一轮融资中体现。}
 
@@ -1142,11 +1091,9 @@
 
 \PlanItem{项目还应关注产品认证和测试要求。虽然早期以试点样机为主，但随着设备进入更多公共空间，需要逐步完善电气安全、无线通信、电池安全、结构可靠性和软件版本管理等测试材料，为后续规模化销售做准备。}
 
-\begin{table}[H]
-  \centering
-  \caption{主要风险矩阵}
-  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2.2cm} >{\centering\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}X}
-    \toprule
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2.2cm} >{\centering\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{\dimexpr\textwidth-7.4cm-6\tabcolsep\relax}@{}}
+  \caption{主要风险矩阵}\\
+  \toprule
     风险类型 & 发生概率 & 影响程度 & 主要应对策略 \\
     \midrule
     导航稳定性风险 & 中 & 高 & 半封闭场景先行、路线复盘、算法迭代 \\
@@ -1157,8 +1104,7 @@
     资金周转风险 & 中 & 中高 & 分阶段投入、控制库存、优先回款场景 \\
     数据合规风险 & 低中 & 中 & 最小化采集、权限管理、场景授权 \\
     \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
 
 \section{项目价值与结论}
 
