@@ -28,8 +28,8 @@
 % === 跨平台自动判断：宋体 ===
 \IfFontExistsTF{SimSun}{
     % 如果电脑里有 SimSun (说明是 Windows)，就用这一套
-    \setCJKmainfont{SimSun}
-    \setCJKsansfont{SimSun}
+    \setCJKmainfont[AutoFakeBold=2.5]{SimSun}
+    \setCJKsansfont[AutoFakeBold=2.5]{SimSun}
     \newcommand{\SongBold}{\CJKfontspec[FakeBold=2.5]{SimSun}}
 }{
     % 如果没有 SimSun (说明是 Mac)，就自动切换到 Songti SC
@@ -1013,8 +1013,10 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 
 本轮融资完成后，公司股权结构如下表所示。创始团队持有公司78\%股权，保持对公司的绝对控制权；投资人以300万元获得12\%股权；另预留10\%作为核心员工期权池，用于后续吸引关键技术和管理人才。
 
-\begin{longtable}{@{}>{\centering\arraybackslash}p{1cm} >{\raggedright\arraybackslash}p{3.5cm} >{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2cm}@{}}
-  \caption{股权结构表}\\
+\begin{table}[H]
+  \centering
+  \caption{股权结构表}
+  \begin{tabular}{@{}>{\centering\arraybackslash}p{1cm} >{\raggedright\arraybackslash}p{3.5cm} >{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{2cm}@{}}
   \toprule
     序号 & 股东名称 & 角色 & 持股比例 \\
     \midrule
@@ -1022,7 +1024,14 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
     2 & 本轮投资人 & 财务投资人 & 12\% \\
     3 & 核心员工期权池 & 预留激励 & 10\% \\
   \bottomrule
-\end{longtable}
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{equity_pie.png}
+  \caption{融资完成后股权结构饼图}
+\end{figure}
 
 \subsection{投资回报分析}
 
@@ -1192,6 +1201,9 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 
 \subsection{主要引用资料}
 
+\begingroup
+\fontsize{11.5bp}{17bp}\selectfont
+
 \PlanItem{中国残联：《2023年残疾人事业发展统计公报》。本文用于支撑残疾人康复服务、辅助器具适配和残疾人服务需求等基础数据。}
 
 \PlanItem{国家统计局：《中华人民共和国2024年国民经济和社会发展统计公报》。本文用于支撑我国65岁及以上人口规模和老龄化趋势判断。}
@@ -1207,6 +1219,8 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 \PlanItem{Glidance Inc. 官网（glidance.io）。本文用于支撑国际导盲机器人Glide的产品定价（\$1,499+\$30/月订阅）、技术参数及上市时间等竞品对标数据。}
 
 \PlanItem{《中华人民共和国无障碍环境建设法》。本文用于支撑公共场所、交通设施和信息服务无障碍建设的政策依据。}
+
+\endgroup
 
 \appendix
 \clearpage
