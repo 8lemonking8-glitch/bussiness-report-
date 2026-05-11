@@ -27,25 +27,25 @@
 \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
 \IfFontExistsTF{Arial}{\setsansfont{Arial}}{}
 % === 跨平台自动判断：宋体 ===
-\IfFontExistsTF{SimSun}{
-    % 如果电脑里有 SimSun (说明是 Windows)，就用这一套
+\IfFontExistsTF{Songti SC}{
+    % Mac 优先使用系统宋体，避免误探测 Windows 字体导致编译变慢
+    \setCJKmainfont{Songti SC}
+    \setCJKsansfont{Songti SC}
+    \newcommand{\SongBold}{\CJKfontspec[FakeBold=2.5]{Songti SC}}
+}{
+    % Windows 环境使用 SimSun
     \setCJKmainfont[AutoFakeBold=2.5]{SimSun}
     \setCJKsansfont[AutoFakeBold=2.5]{SimSun}
     \newcommand{\SongBold}{\CJKfontspec[FakeBold=2.5]{SimSun}}
-}{
-    % 如果没有 SimSun (说明是 Mac)，就自动切换到 Songti SC
-    \setCJKmainfont{Songti SC}
-    \setCJKsansfont{Songti SC}
-    \newcommand{\SongBold}{\CJKfontspec{Songti SC Bold}}
 }
 
 % === 跨平台自动判断：黑体 ===
-\IfFontExistsTF{SimHei}{
-    % 如果是 Windows 系统
-    \newcommand{\HeiBold}{\CJKfontspec[FakeBold=2.5]{SimHei}}
-}{
-    % 如果是 Mac 系统
+\IfFontExistsTF{Heiti SC}{
+    % Mac 系统黑体
     \newcommand{\HeiBold}{\CJKfontspec{Heiti SC Medium}}
+}{
+    % Windows 系统黑体
+    \newcommand{\HeiBold}{\CJKfontspec[FakeBold=2.5]{SimHei}}
 }
 
 \makeatletter
@@ -211,7 +211,7 @@
   \resizebox{0.88\textwidth}{!}{%
   \begin{tikzpicture}[
     node distance=1.2cm,
-    modcol/.style={draw=#1, rounded corners=6pt, minimum width=3cm, minimum height=1cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\small\bfseries, line width=1pt},
+    modcol/.style 2 args={draw=#1, rounded corners=6pt, minimum width=3cm, minimum height=1cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\small\bfseries, line width=1pt},
     core/.style={draw=cyan!60!blue, rounded corners=8pt, minimum width=3.8cm, minimum height=1.2cm, align=center, fill=cyan!8, text=cyan!30!black, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.3}, font=\bfseries, line width=1.4pt},
     arrow/.style={-{Stealth[length=2.8mm]}, thick, cyan!50!blue}
   ]
@@ -348,6 +348,12 @@
 
 \PlanItem{技术层面，激光雷达、SLAM建图、低速移动机器人、语音交互和边缘计算已经过了概念验证期。配送机器人、清洁机器人和导览机器人在商场、园区和酒店的落地，证明了低速移动设备在公共空间中的可行性。将这些技术迁移至视障陪行，路径上不存在原理性障碍，挑战在于安全冗余、人机牵引和无障碍交互的针对性适配。}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{插图/图 B7.png}
+  \caption{市场空间规模气泡图（三大赛道交汇）}
+\end{figure}
+
 \subsection{市场需求}
 
 需求端由三类人群共同构成。第一类是长期视障人士，他们需要更稳定、更安全、更能进入陌生空间的独立出行工具；第二类是低视力老人，他们可能缺乏熟练使用盲杖和智能手机导航的能力，却存在就医、办事、游览和社区活动等现实需求；第三类是公共场景中的临时需求人群，包括短期眼部疾病患者、夜间低视力游客和行动不便者。
@@ -367,6 +373,12 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
     个人出行市场 & 视障人士、低视力老人及家庭 & 提升独立出行能力，降低家属陪同压力 \\
     \bottomrule
 \end{longtable}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{插图/图 B1.png}
+  \caption{目标市场细分水平柱状图}
+\end{figure}
 
 \subsection{市场调研}
 
@@ -389,6 +401,12 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
     残联/社区 & 关注共享使用、公益采购、培训成本和辅助器具可及性 \\
     \bottomrule
 \end{longtable}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{插图/图 B6.png}
+  \caption{市场需求调研关键发现柱状图}
+\end{figure}
 
 \subsection{市场定位}
 
@@ -436,6 +454,12 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
     \bottomrule
 \end{longtable}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{插图/图 B2.png}
+  \caption{竞争对比雷达图（5维度 x 6方案）}
+\end{figure}
+
 \subsection{波特五力分析}
 
 \PlanItem{产业内部竞争方面，目前市场上已存在普通盲杖、电子盲杖、手机导航、室内导览机器人和人工陪同服务，但真正针对视障人士公共空间陪行、同时具备激光雷达避障、室内地图和场景运维的产品仍属少数。现阶段直接竞争强度中等，未来随着机器人企业的进入，该赛道竞争可能增强。}
@@ -461,6 +485,12 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
     \bottomrule
 \end{longtable}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{插图/图 B3.png}
+  \caption{波特五力强度图}
+\end{figure}
+
 \subsection{SWOT 分析}
 
 \PlanItem{优势方面，项目具有明确的社会价值和场景价值，能够同时满足视障人士独立出行、公共空间无障碍升级和景区/医院服务提质需求。产品融合了激光雷达、室内地图、牵引反馈和语音交互，差异化程度高，且适合通过 B 端场景实现批量投放。}
@@ -483,11 +513,23 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
     \bottomrule
 \end{longtable}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{插图/图 B4.png}
+  \caption{SWOT 2x2 矩阵分析图}
+\end{figure}
+
 \subsection{市场进入策略}
 
 项目市场进入不宜一开始就大规模面向个人销售，而应选择可控、可展示、可复制的公共场景完成第一轮验证。优先顺序为校园和展馆封闭测试、医院和景区示范试点、残联和社区共享服务、交通枢纽与大型公共空间复制。
 
 第一阶段重点不是追求销售额，而是验证路线成功率、用户满意度、设备故障率、平均运维成本和场景方续费意愿。第二阶段再把试点形成标准化交付方案，包括地图采集流程、点位标注规范、设备投放标准、人员培训手册和后台管理系统。第三阶段才逐步扩大到个人端长租和家庭购买。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{插图/图 B5.png}
+  \caption{市场进入三阶段路线图}
+\end{figure}
 
 \section{项目团队与公司管理}
 
@@ -572,8 +614,8 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
   \resizebox{\textwidth}{!}{%
   \begin{tikzpicture}[
     level1/.style={draw=cyan!70!blue, line width=1.5pt, rounded corners=6pt, minimum width=4.8cm, minimum height=1.3cm, align=center, fill=cyan!8, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.3}, font=\Large\SongBold, text=cyan!30!black},
-    level2/.style={draw=#1, line width=1.2pt, rounded corners=5pt, minimum width=3.3cm, minimum height=1cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\large\SongBold, text=#3},
-    level3/.style={draw=#1!60, rounded corners=4pt, minimum width=2.5cm, minimum height=0.75cm, align=center, fill=#2, font=\normalsize, text=#1!50!black},
+    level2/.style n args={3}{draw=#1, line width=1.2pt, rounded corners=5pt, minimum width=3.3cm, minimum height=1cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\large\SongBold, text=#3},
+    level3/.style n args={3}{draw=#3, rounded corners=4pt, minimum width=2.5cm, minimum height=0.75cm, align=center, fill=#2, font=\normalsize, text=#3},
     line/.style={draw, thick, #1}
   ]
     % 第一层：总经理
@@ -595,18 +637,18 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
     \draw[line=green!50!black] (fin.north |- mid) -- (fin.north);
 
     % 第三层：各部门下属业务组
-    \def\drawbranch#1#2#3#4#5{
+    \def\drawbranch#1#2#3#4#5#6{
       \coordinate (fork#1) at ([xshift=-1.1cm]#1.south);
-      \node[level3={#2}{#3}, below right=0.6cm and -0.7cm of #1.south, anchor=west] (child1#1) {#4};
-      \node[level3={#2}{#3}, below right=1.7cm and -0.7cm of #1.south, anchor=west] (child2#1) {#5};
+      \node[level3={#2}{#3}{#4}, below right=0.6cm and -0.7cm of #1.south, anchor=west] (child1#1) {#5};
+      \node[level3={#2}{#3}{#4}, below right=1.7cm and -0.7cm of #1.south, anchor=west] (child2#1) {#6};
       \draw[line=#2!50] (fork#1) -- (fork#1 |- child2#1.west);
       \draw[line=#2!50] (fork#1 |- child1#1.west) -- (child1#1.west);
       \draw[line=#2!50] (fork#1 |- child2#1.west) -- (child2#1.west);
     }
-    \drawbranch{tech}{teal!60!blue}{teal!5}{硬件底盘组}{SLAM算法组}
-    \drawbranch{mkt}{purple!60!blue}{purple!5}{医疗渠道组}{文旅渠道组}
-    \drawbranch{ops}{orange!70!black}{orange!5}{地图采集组}{客户维护组}
-    \drawbranch{fin}{green!50!black}{green!5}{财务预算组}{法务合规组}
+    \drawbranch{tech}{teal!60!blue}{teal!5}{teal!40!black}{硬件底盘组}{SLAM算法组}
+    \drawbranch{mkt}{purple!60!blue}{purple!5}{purple!40!black}{医疗渠道组}{文旅渠道组}
+    \drawbranch{ops}{orange!70!black}{orange!5}{orange!50!black}{地图采集组}{客户维护组}
+    \drawbranch{fin}{green!50!black}{green!5}{green!40!black}{财务预算组}{法务合规组}
 
   \end{tikzpicture}%
   }
@@ -656,7 +698,7 @@ C 端市场采用分层进入策略。高频出行的视障人士或低视力老
   \centering
   \begin{tikzpicture}[
     node distance=0.85cm,
-    blk/.style={draw=#1, rounded corners=7pt, minimum width=2.8cm, minimum height=0.95cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\small\bfseries, text=#3, line width=1.1pt},
+    blk/.style n args={3}{draw=#1, rounded corners=7pt, minimum width=2.8cm, minimum height=0.95cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\small\bfseries, text=#3, line width=1.1pt},
     core/.style={draw=cyan!60!blue, circle, minimum size=2.8cm, align=center, fill=cyan!8, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.3}, font=\bfseries, text=cyan!30!black, line width=1.5pt},
     arrow/.style={-{Stealth[length=2.5mm]}, thick, cyan!45!blue}
   ]
@@ -698,6 +740,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 地图建设和年度运维单独计费。地图建设费根据场地面积、楼层数量、点位数量和路线复杂度确定；年度运维费覆盖地图更新、设备巡检、远程监控、系统升级和故障响应。这种收费方式使项目在设备售出或租出后仍能获得持续收入。
 
 对于残联、社区和公益项目，项目可采用补贴价、联合采购、公益租赁和企业赞助等方式降低使用成本。公益渠道的价格不宜过高，但可以通过规模化投放、媒体传播和政府背书获得长期品牌价值。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{插图/图 D4.png}
+  \caption{定价策略对比图（瞳伴 vs 竞品价格带）}
+\end{figure}
 
 \subsection{渠道策略}
 
@@ -742,7 +790,7 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
   \centering
   \begin{tikzpicture}[
     node distance=0.75cm,
-    step/.style={draw=#1, rounded corners=6pt, minimum width=2.3cm, minimum height=0.85cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.18}, font=\small\bfseries, text=#3, line width=1pt},
+    step/.style n args={3}{draw=#1, rounded corners=6pt, minimum width=2.3cm, minimum height=0.85cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.18}, font=\small\bfseries, text=#3, line width=1pt},
     arrow/.style={-{Stealth[length=2.2mm]}, thick, #1}
   ]
     % 上行：勘测 -> 采集 -> 标注 -> 测试
@@ -833,7 +881,13 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 
 \PlanItem{\textbf{融资到位后第 24 个月（当期盈亏平衡节点）：}随着成熟场景方案的批量化复制（覆盖 15 家以上机构），公司日常的主营业务收入将正式覆盖当期的运营、研发与营销成本，实现公司财报上的当期盈亏平衡。}
 
-\PlanItem{\textbf{融资到位后第 36 个月（历史总投入与产出平衡节点）：}随着“设备销售+场景运维+长租”多维商业模式全面铺开，项目累计净利润将首次抹平自成立以来的所有历史研发投入与早期亏损，实现历史总投入与总产出的完全平衡，并开始为投资人创造纯利润与高额分红。}
+\PlanItem{\textbf{融资到位后第 36 个月（历史总投入与产出平衡节点）：}随着设备销售+场景运维+长租多维商业模式全面铺开，项目累计净利润将首次抹平自成立以来的所有历史研发投入与早期亏损，实现历史总投入与总产出的完全平衡，并开始为投资人创造纯利润与高额分红。}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{插图/图 D1.png}
+  \caption{商业里程碑时间轴}
+\end{figure}
 
 \section{财务计划}
 
@@ -869,6 +923,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
     \bottomrule
 \end{longtable}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{插图/图 A1.png}
+  \caption{五年收入结构堆叠柱状图（2027--2031）}
+\end{figure}
+
 成本由营业成本和期间费用构成。营业成本包括产品加工成本（激光雷达、深度摄像头、边缘计算模块、电池、电机、底盘和装配费用）和场景服务交付成本（地图采集、点位标注、现场培训、设备巡检和售后维护）。期间费用包括销售费用、管理费用和研发费用，公司无借款，财务费用为零（少量银行账户手续费等已并入管理费用列示）。
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.2cm} *{5}{>{\centering\arraybackslash}p{\dimexpr(\textwidth-3.2cm-10\tabcolsep)/5\relax}}@{}}
@@ -884,6 +944,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 \end{longtable}
 
 从成本结构看，项目早期研发费用和营业成本占比较高，反映样机开发和服务交付的前期投入特征；中后期随着设备批量提升和地图工具成熟，单台制造成本与单场景交付成本预计逐年下降，管理费用因组织扩张而阶段性上升，销售费用增速低于收入增速，体现规模效应。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{插图/图 A3.png}
+  \caption{五年成本费用结构堆叠柱状图（2027--2031）}
+\end{figure}
 
 \subsection{利润表预测}
 
@@ -913,7 +979,13 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
     \bottomrule
 \end{longtable}
 
-税费说明：增值税方面，硬件销售及设备租赁适用13\%税率，地图建设、运维及导览服务适用6\%税率，城市维护建设税7\%、教育费附加3\%以上述增值税额为计税依据，表中“税金及附加”为增值税附加合计。企业所得税方面，2027年因亏损不产生税负，2028年因前期亏损抵扣实际税负为零，2029年起按15\%高新技术企业税率计提。上述测算为保守估计，实际税负可能因研发费用加计扣除等优惠政策进一步降低。
+税费说明：增值税方面，硬件销售及设备租赁适用13\%税率，地图建设、运维及导览服务适用6\%税率，城市维护建设税7\%、教育费附加3\%以上述增值税额为计税依据，表中税金及附加为增值税附加合计。企业所得税方面，2027年因亏损不产生税负，2028年因前期亏损抵扣实际税负为零，2029年起按15\%高新技术企业税率计提。上述测算为保守估计，实际税负可能因研发费用加计扣除等优惠政策进一步降低。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{插图/图 A2.png}
+  \caption{收入-成本-利润趋势折线图（2027--2031）}
+\end{figure}
 
 \subsection{资产负债表预测}
 
@@ -996,6 +1068,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 
 现金流量表与利润表的勾稽说明：2028年经营活动现金净额（+83万元）大于净利润（+39万元），主要因折旧摊销等非付现费用及应付账款自然增长；2029年起随着盈利规模扩大和营运资金效率提升，经营活动现金流持续高于净利润，表明项目盈利质量良好、自我造血能力稳步增强。2028年现金净增加额为-7万元，主要因设备投放和地图采集等投资活动支出（-90万元）略超经营活动现金流入，不影响当期经营盈亏平衡的实现。
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\textwidth]{插图/图 A6.png}
+  \caption{现金流趋势图（2027--2031）}
+\end{figure}
+
 \subsection{融资需求与资金用途}
 
 本轮拟融资300万元，出让12\%股权，对应投后估值2500万元。创始团队另自筹50万元作为启动资金，合计350万元注入公司。该估值主要建立在项目的社会价值、技术可行性、场景可复制性和机器人无障碍服务的增长空间之上。
@@ -1018,6 +1096,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
   团队补充与营运资金 & 30 & 用于补充研发、运营、市场岗位以及日常经营周转。 \\
   \bottomrule
 \end{longtable}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{插图/图 A4.png}
+  \caption{融资资金用途环形图（300万元）}
+\end{figure}
 
 \subsection{股权结构}
 
@@ -1070,6 +1154,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 
 以上测算基于项目如期完成场景验证和规模复制的前提。若项目在A轮或B轮融资中获得更高溢价，或通过产业并购实现协同退出，回报倍数可能进一步提升。同时，投资人5年累计现金分红约55万元虽数额不大，但考虑到项目前两年处于亏损和微利状态、第三年起利润才加速释放，分红本身已证明商业模式的现金回报能力。
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{插图/图 A5.png}
+  \caption{投资回报增值瀑布图（300万 -> 2500--3300万）}
+\end{figure}
+
 \section{资本退出}
 
 \subsection{后续融资或股权转让}
@@ -1099,6 +1189,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 \subsection{退出机制总结}
 
 \PlanItem{综合来看，本项目优先考虑后续融资股权转让和产业并购退出，长期保留资本市场退出可能，清算退出作为底线安排。项目越早形成可验证经营数据和场景客户资源，投资人退出路径就越清晰。}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{插图/图 D3.png}
+  \caption{资本退出路径示意图}
+\end{figure}
 
 \section{风险与对策}
 
@@ -1188,6 +1284,12 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
     数据合规风险 & 低中 & 中 & 最小化采集、权限管理、场景授权 \\
     \bottomrule
 \end{longtable}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{插图/图 D2.png}
+  \caption{风险热力图}
+\end{figure}
 
 \section{项目价值与结论}
 
@@ -1305,6 +1407,36 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
      &  & 不支持 & 2.4\% \\
   \bottomrule
 \end{longtable}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{插图/图 C1.png}
+  \caption{题4：愿意尝试智能导盲设备的比例}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{插图/图 C2.png}
+  \caption{题5：最关注智能导盲设备的方面}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{插图/图 C3.png}
+  \caption{题6：更能接受的使用方式}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{插图/图 C4.png}
+  \caption{题8：最适合优先部署的场景}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{插图/图 C5.png}
+  \caption{题10：是否支持公共场所配置智能导引设备}
+\end{figure}
 
 \subsection{访谈提纲}
 
