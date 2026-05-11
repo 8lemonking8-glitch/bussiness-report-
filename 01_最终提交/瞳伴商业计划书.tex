@@ -22,7 +22,7 @@
 \usepackage{indentfirst}
 \usepackage{tikz}
 \usepackage{eso-pic}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,shadows.blur,backgrounds,calc,decorations.pathreplacing}
 
 \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
 \IfFontExistsTF{Arial}{\setsansfont{Arial}}{}
@@ -210,17 +210,17 @@
   \centering
   \resizebox{0.88\textwidth}{!}{%
   \begin{tikzpicture}[
-    node distance=1.1cm,
-    module/.style={draw, rounded corners, minimum width=3cm, minimum height=0.9cm, align=center},
-    core/.style={draw, rounded corners, minimum width=3.6cm, minimum height=1cm, align=center, fill=gray!12},
-    arrow/.style={-{Stealth[length=2.2mm]}, thick}
+    node distance=1.2cm,
+    modcol/.style={draw=#1, rounded corners=6pt, minimum width=3cm, minimum height=1cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\small\bfseries, line width=1pt},
+    core/.style={draw=cyan!60!blue, rounded corners=8pt, minimum width=3.8cm, minimum height=1.2cm, align=center, fill=cyan!8, text=cyan!30!black, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.3}, font=\bfseries, line width=1.4pt},
+    arrow/.style={-{Stealth[length=2.8mm]}, thick, cyan!50!blue}
   ]
     \node[core] (robot) {导盲犬形态\\智能陪行机器人};
-    \node[module, above left=of robot] (lidar) {激光雷达\\深度视觉};
-    \node[module, above right=of robot] (compute) {边缘计算\\路径规划};
-    \node[module, below left=of robot] (handle) {牵引手柄\\震动反馈};
-    \node[module, below right=of robot] (voice) {语音交互\\紧急求助};
-    \node[module, below=1.45cm of robot] (cloud) {地图平台\\远程运维};
+    \node[modcol={teal!60!black}{teal!10}, above left=of robot] (lidar) {激光雷达\\深度视觉};
+    \node[modcol={purple!60!black}{purple!8}, above right=of robot] (compute) {边缘计算\\路径规划};
+    \node[modcol={orange!70!black}{orange!10}, below left=of robot] (handle) {牵引手柄\\震动反馈};
+    \node[modcol={green!50!black}{green!8}, below right=of robot] (voice) {语音交互\\紧急求助};
+    \node[modcol={blue!60!black}{blue!8}, below=1.5cm of robot] (cloud) {地图平台\\远程运维};
     \draw[arrow] (lidar) -- (robot);
     \draw[arrow] (compute) -- (robot);
     \draw[arrow] (robot) -- (handle);
@@ -286,15 +286,21 @@
   \centering
   \resizebox{0.9\textwidth}{!}{%
   \begin{tikzpicture}[
-    node distance=0.9cm,
-    flowstep/.style={draw, rounded corners, minimum width=2.5cm, minimum height=0.85cm, align=center},
-    arrow/.style={-{Stealth[length=2mm]}, thick}
+    node distance=0.8cm,
+    fstep/.style 2 args={
+      draw=#1, rounded corners=6pt,
+      minimum width=2.5cm, minimum height=1.05cm, align=center,
+      fill=#2,
+      drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2},
+      font=\small\bfseries, line width=1pt
+    },
+    arrow/.style={-{Stealth[length=2.5mm]}, thick, cyan!50!blue, line width=1.3pt}
   ]
-    \node[flowstep] (sense) {多传感器\\环境感知};
-    \node[flowstep, right=of sense] (map) {SLAM 建图\\室内定位};
-    \node[flowstep, right=of map] (plan) {路径规划\\风险判断};
-    \node[flowstep, right=of plan] (interact) {语音提示\\牵引反馈};
-    \node[flowstep, right=of interact] (safe) {异常停车\\后台告警};
+    \node[fstep={cyan!70!blue}{cyan!5}] (sense) {多传感器\\环境感知};
+    \node[fstep={cyan!60!blue}{cyan!8}, right=of sense] (map) {SLAM 建图\\室内定位};
+    \node[fstep={teal!60!blue}{teal!8}, right=of map] (plan) {路径规划\\风险判断};
+    \node[fstep={teal!50!green}{teal!5}, right=of plan] (interact) {语音提示\\牵引反馈};
+    \node[fstep={green!40!blue}{green!6}, right=of interact] (safe) {异常停车\\后台告警};
     \draw[arrow] (sense) -- (map);
     \draw[arrow] (map) -- (plan);
     \draw[arrow] (plan) -- (interact);
@@ -546,14 +552,15 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[
-    node distance=1.5cm,
-    box/.style={draw, rounded corners, minimum width=6cm, minimum height=1.2cm, align=center, fill=gray!10, font=\bfseries},
-    arrow/.style={-{Stealth[length=3mm]}, thick}
+    node distance=1.4cm,
+    ibox/.style={draw=cyan!60!blue, rounded corners=8pt, minimum width=6cm, minimum height=1.3cm, align=center, fill=cyan!5, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.25}, font=\bfseries, line width=1.2pt},
+    hbox/.style={draw=teal!50!blue, rounded corners=8pt, minimum width=6cm, minimum height=1.3cm, align=center, fill=teal!5, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.25}, font=\bfseries, line width=1.2pt},
+    arrow/.style={-{Stealth[length=3.5mm]}, ultra thick, cyan!50!blue}
   ]
-    \node[box] (investor) {投资机构 / 投资人\\（本轮融资金额：300万元）};
-    \node[box, below=1.5cm of investor] (hq) {瞳伴（中国）总公司\\（国内运营总部与核心研发中心）};
+    \node[ibox] (investor) {投资机构 / 投资人\\（本轮融资金额：300万元）};
+    \node[hbox, below=1.4cm of investor] (hq) {瞳伴（中国）总公司\\（国内运营总部与核心研发中心）};
 
-    \draw[arrow] (investor) -- node[right, align=left, font=\small] {资金直接全额注资\\（绝不设下属分公司或关联公司）} (hq);
+    \draw[arrow] (investor) -- node[right, align=left, font=\small\bfseries, text=teal!50!black] {资金直接全额注资\\（绝不设下属分公司\\或关联公司）} (hq);
   \end{tikzpicture}
   \caption{融资资金注入路径图（A图）}
 \end{figure}
@@ -564,48 +571,42 @@ B 端场景需求同样明确。景区需要提供无障碍游览和讲解服务
   \centering
   \resizebox{\textwidth}{!}{%
   \begin{tikzpicture}[
-    level1/.style={draw=black!70, thick, rounded corners=4pt, minimum width=4.5cm, minimum height=1.2cm, align=center, fill=cyan!5, font=\Large\SongBold},
-    level2/.style={draw=black!70, thick, rounded corners=3pt, minimum width=3.3cm, minimum height=1cm, align=center, fill=gray!10, font=\large\SongBold},
-    level3/.style={draw=black!60, rounded corners=2pt, minimum width=2.5cm, minimum height=0.7cm, align=center, fill=white, font=\normalsize},
-    line/.style={draw, thick, -}
+    level1/.style={draw=cyan!70!blue, line width=1.5pt, rounded corners=6pt, minimum width=4.8cm, minimum height=1.3cm, align=center, fill=cyan!8, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.3}, font=\Large\SongBold, text=cyan!30!black},
+    level2/.style={draw=#1, line width=1.2pt, rounded corners=5pt, minimum width=3.3cm, minimum height=1cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\large\SongBold, text=#3},
+    level3/.style={draw=#1!60, rounded corners=4pt, minimum width=2.5cm, minimum height=0.75cm, align=center, fill=#2, font=\normalsize, text=#1!50!black},
+    line/.style={draw, thick, #1}
   ]
-    % 1. 第一层：总经理
+    % 第一层：总经理
     \node[level1] (gm) {总经理 (CEO)};
 
-    % 2. 第二层：四大职能部门 (利用精确坐标保证完美横向居中对齐)
-    % 框宽3.3cm，间距0.4cm，计算得出左右偏移量 1.85cm
-    \node[level2] (mkt) at ([yshift=-1.8cm, xshift=-1.85cm]gm.south) {市场合作部};
-    \node[level2] (ops) at ([yshift=-1.8cm, xshift=1.85cm]gm.south) {运营服务部};
-    \node[level2, left=0.4cm of mkt] (tech) {技术研发部};
-    \node[level2, right=0.4cm of ops] (fin) {财务综合部};
+    % 第二层：四大职能部门
+    \node[level2={teal!60!blue}{teal!6}{teal!40!black}] (tech) at ([yshift=-2cm, xshift=-3.7cm]gm.south) {技术研发部};
+    \node[level2={purple!60!blue}{purple!6}{purple!40!black}, right=0.6cm of tech] (mkt) {市场合作部};
+    \node[level2={orange!70!black}{orange!8}{orange!50!black}, right=0.6cm of mkt] (ops) {运营服务部};
+    \node[level2={green!50!black}{green!6}{green!40!black}, right=0.6cm of ops] (fin) {财务综合部};
 
-    % 3. 画顶层到第二层的连线 (标准倒 T 型金字塔结构)
-    \coordinate (mid) at ([yshift=-0.7cm]gm.south);
-    \draw[line] (gm.south) -- (mid);
-    \draw[line] (tech.north |- mid) -- (fin.north |- mid);
-    \draw[line] (tech.north |- mid) -- (tech.north);
-    \draw[line] (mkt.north |- mid) -- (mkt.north);
-    \draw[line] (ops.north |- mid) -- (ops.north);
-    \draw[line] (fin.north |- mid) -- (fin.north);
+    % 顶层到第二层的连线
+    \coordinate (mid) at ([yshift=-0.8cm]gm.south);
+    \draw[line=cyan!50!blue] (gm.south) -- (mid);
+    \draw[line=cyan!50!blue] (tech.north |- mid) -- (fin.north |- mid);
+    \draw[line=teal!50!blue] (tech.north |- mid) -- (tech.north);
+    \draw[line=purple!50!blue] (mkt.north |- mid) -- (mkt.north);
+    \draw[line=orange!60!black] (ops.north |- mid) -- (ops.north);
+    \draw[line=green!50!black] (fin.north |- mid) -- (fin.north);
 
-    % 4. 第三层：各部门下属业务组 (定义辅助命令批量画侧边分支)
-    \def\drawbranch#1#2#3{
-      % 设置垂直主干线：从父节点底部靠左 1.1cm 处落下
+    % 第三层：各部门下属业务组
+    \def\drawbranch#1#2#3#4#5{
       \coordinate (fork#1) at ([xshift=-1.1cm]#1.south);
-      % 设置子节点：统一靠右对齐放置 (这里调大了 0.5cm 和 1.6cm 来让垂直间距更松弛)
-      \node[level3, below right=0.5cm and -0.8cm of #1.south, anchor=west] (child1#1) {#2};
-      \node[level3, below right=1.6cm and -0.8cm of #1.south, anchor=west] (child2#1) {#3};
-      % 画折线相连
-      \draw[line] (fork#1) -- (fork#1 |- child2#1.west);
-      \draw[line] (fork#1 |- child1#1.west) -- (child1#1.west);
-      \draw[line] (fork#1 |- child2#1.west) -- (child2#1.west);
+      \node[level3={#2}{#3}, below right=0.6cm and -0.7cm of #1.south, anchor=west] (child1#1) {#4};
+      \node[level3={#2}{#3}, below right=1.7cm and -0.7cm of #1.south, anchor=west] (child2#1) {#5};
+      \draw[line=#2!50] (fork#1) -- (fork#1 |- child2#1.west);
+      \draw[line=#2!50] (fork#1 |- child1#1.west) -- (child1#1.west);
+      \draw[line=#2!50] (fork#1 |- child2#1.west) -- (child2#1.west);
     }
-
-    % 调用宏批量生成第三层
-    \drawbranch{tech}{硬件底盘组}{SLAM算法组}
-    \drawbranch{mkt}{医疗渠道组}{文旅渠道组}
-    \drawbranch{ops}{地图采集组}{客户维护组}
-    \drawbranch{fin}{财务预算组}{法务合规组}
+    \drawbranch{tech}{teal!60!blue}{teal!5}{硬件底盘组}{SLAM算法组}
+    \drawbranch{mkt}{purple!60!blue}{purple!5}{医疗渠道组}{文旅渠道组}
+    \drawbranch{ops}{orange!70!black}{orange!5}{地图采集组}{客户维护组}
+    \drawbranch{fin}{green!50!black}{green!5}{财务预算组}{法务合规组}
 
   \end{tikzpicture}%
   }
@@ -654,22 +655,22 @@ C 端市场采用分层进入策略。高频出行的视障人士或低视力老
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[
-    node distance=0.9cm,
-    block/.style={draw, rounded corners, minimum width=2.65cm, minimum height=0.85cm, align=center},
-    center/.style={draw, rounded corners, minimum width=3.1cm, minimum height=1cm, align=center, fill=gray!12},
-    arrow/.style={-{Stealth[length=2mm]}, thick}
+    node distance=0.85cm,
+    blk/.style={draw=#1, rounded corners=7pt, minimum width=2.8cm, minimum height=0.95cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.2}, font=\small\bfseries, text=#3, line width=1.1pt},
+    core/.style={draw=cyan!60!blue, circle, minimum size=2.8cm, align=center, fill=cyan!8, drop shadow={shadow xshift=2pt, shadow yshift=-2pt, opacity=0.3}, font=\bfseries, text=cyan!30!black, line width=1.5pt},
+    arrow/.style={-{Stealth[length=2.5mm]}, thick, cyan!45!blue}
   ]
-    \node[center] (company) {瞳伴\\平台与设备};
-    \node[block, above left=of company] (b) {B 端场景\\景区/医院};
-    \node[block, above right=of company] (c) {C 端用户\\个人/家庭};
-    \node[block, below left=of company] (service) {地图建设\\年度运维};
-    \node[block, below right=of company] (public) {残联社区\\公益采购};
+    \node[core] (company) {瞳伴\\平台与设备};
+    \node[blk={teal!60!blue}{teal!6}{teal!40!black}, above left=1.6cm of company] (b) {B 端场景\\景区/医院};
+    \node[blk={purple!60!blue}{purple!6}{purple!40!black}, above right=1.6cm of company] (c) {C 端用户\\个人/家庭};
+    \node[blk={orange!70!black}{orange!8}{orange!50!black}, below left=1.6cm of company] (service) {地图建设\\年度运维};
+    \node[blk={green!50!black}{green!6}{green!40!black}, below right=1.6cm of company] (public) {残联社区\\公益采购};
     \draw[arrow] (company) -- (b);
     \draw[arrow] (company) -- (c);
     \draw[arrow] (company) -- (service);
     \draw[arrow] (company) -- (public);
-    \draw[arrow] (b) -- (company);
-    \draw[arrow] (service) -- (company);
+    \draw[arrow, teal!45!blue] (b) -- (company);
+    \draw[arrow, orange!60!black] (service) -- (company);
   \end{tikzpicture}
   \caption{商业模式示意图}
 \end{figure}
@@ -740,25 +741,31 @@ C 端销售采用“体验转化 + 租售结合”的方式。用户先在景区
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[
-    node distance=0.65cm,
-    flowstep/.style={draw, rounded corners, minimum width=2.25cm, minimum height=0.8cm, align=center},
-    arrow/.style={-{Stealth[length=2mm]}, thick}
+    node distance=0.75cm,
+    step/.style={draw=#1, rounded corners=6pt, minimum width=2.3cm, minimum height=0.85cm, align=center, fill=#2, drop shadow={shadow xshift=1.5pt, shadow yshift=-1.5pt, opacity=0.18}, font=\small\bfseries, text=#3, line width=1pt},
+    arrow/.style={-{Stealth[length=2.2mm]}, thick, #1}
   ]
-    \node[flowstep] (survey) {场景勘测};
-    \node[flowstep, right=of survey] (map) {地图采集};
-    \node[flowstep, right=of map] (mark) {点位标注};
-    \node[flowstep, right=of mark] (test) {路线测试};
-    \node[flowstep, below=0.9cm of mark] (train) {人员培训};
-    \node[flowstep, left=of train] (deploy) {设备投放};
-    \node[flowstep, left=of deploy] (review) {试运行复盘};
-    \node[flowstep, right=of train] (ops) {运维更新};
-    \draw[arrow] (survey) -- (map);
-    \draw[arrow] (map) -- (mark);
-    \draw[arrow] (mark) -- (test);
-    \draw[arrow] (test) -- (train);
-    \draw[arrow] (train) -- (deploy);
-    \draw[arrow] (deploy) -- (review);
-    \draw[arrow] (train) -- (ops);
+    % 上行：勘测 -> 采集 -> 标注 -> 测试
+    \node[step={cyan!65!blue}{cyan!5}{cyan!40!black}] (survey) {场景勘测};
+    \node[step={cyan!55!blue}{cyan!6}{cyan!35!black}, right=of survey] (map) {地图采集};
+    \node[step={teal!55!blue}{teal!6}{teal!35!black}, right=of map] (mark) {点位标注};
+    \node[step={teal!45!green}{teal!5}{teal!30!black}, right=of mark] (test) {路线测试};
+    % 下行：部署 -> 复盘 , 培训 , 运维
+    \node[step={orange!65!black}{orange!7}{orange!45!black}, below=1cm of mark] (train) {人员培训};
+    \node[step={purple!55!blue}{purple!5}{purple!35!black}, left=of train] (deploy) {设备投放};
+    \node[step={purple!45!blue}{purple!4}{purple!30!black}, left=of deploy] (review) {试运行复盘};
+    \node[step={green!45!black}{green!5}{green!35!black}, right=of train] (ops) {运维更新};
+    % 连线
+    \draw[arrow={cyan!50!blue}] (survey) -- (map);
+    \draw[arrow={cyan!45!blue}] (map) -- (mark);
+    \draw[arrow={teal!45!blue}] (mark) -- (test);
+    \draw[arrow={teal!40!green}] (test) -- (train);
+    \draw[arrow={orange!50!black}] (train) -- (deploy);
+    \draw[arrow={purple!40!blue}] (deploy) -- (review);
+    \draw[arrow={green!40!black}] (train) -- (ops);
+    % 反馈回路（虚线）
+    \draw[arrow={gray!50}, densely dashed] (review.south) to[out=-90, in=-90, looseness=1.5] (survey.south);
+    \node[font=\footnotesize, text=gray, below=0.3cm of review] {反馈优化};
   \end{tikzpicture}
   \caption{场景部署流程示意图}
 \end{figure}
